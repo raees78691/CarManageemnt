@@ -1,0 +1,163 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > Car</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.CarManagement.entity</a>
+</div>
+
+<h1>Coverage Summary for Class: Car (com.example.CarManagement.entity)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Car</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Car$HibernateInstantiator</td>
+  </tr>
+  <tr>
+    <td class="name">Car$HibernateProxy</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.CarManagement.entity;
+&nbsp;
+&nbsp;import jakarta.persistence.*;
+&nbsp;import org.antlr.v4.runtime.misc.NotNull;
+&nbsp;
+&nbsp;import java.math.BigInteger;
+&nbsp;
+&nbsp;@Entity
+<b class="fc">&nbsp;public class Car {</b>
+&nbsp;    @Id
+&nbsp;    @NotNull
+&nbsp;    private String carNumber;
+&nbsp;    private String carCategory;
+&nbsp;    private BigInteger rateHour;
+&nbsp;    @OneToOne(cascade = CascadeType.ALL)
+&nbsp;    private BookingDetail bookingDetail;
+&nbsp;    public void setCarNumber(String carNumber) {
+<b class="fc">&nbsp;        this.carNumber = carNumber;</b>
+&nbsp;    }
+&nbsp;    public String getCarNumber() {
+<b class="fc">&nbsp;        return carNumber;</b>
+&nbsp;    }
+&nbsp;    public void setCarCategory(String carCategory) {
+<b class="fc">&nbsp;        this.carCategory = carCategory;</b>
+&nbsp;    }
+&nbsp;    public String getCarCategory() {
+<b class="fc">&nbsp;        return carCategory;</b>
+&nbsp;    }
+&nbsp;    public void setRateHour(BigInteger rateHour) {
+<b class="fc">&nbsp;        this.rateHour = rateHour;</b>
+&nbsp;    }
+&nbsp;    public BigInteger getRateHour() {
+<b class="fc">&nbsp;        return rateHour;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;    public void setBookingDetail(BookingDetail bookingDetail) {
+<b class="fc">&nbsp;        this.bookingDetail = bookingDetail;</b>
+&nbsp;    }
+&nbsp;    public BookingDetail getBookingDetail() {
+<b class="fc">&nbsp;        return bookingDetail;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-08-01 13:16</div>
+</div>
+</body>
+</html>

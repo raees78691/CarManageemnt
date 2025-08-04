@@ -1,0 +1,32 @@
+<div>
+  <h2>Book a Car</h2>
+  <form (ngSubmit)="bookCar()" #carForm="ngForm">
+    <input [(ngModel)]="car.carNumber" name="carNumber" placeholder="Car Number" required />
+    <input [(ngModel)]="car.carCategory" name="carCategory" placeholder="Car Category" required />
+    <input [(ngModel)]="car.rateHour" name="rateHour" placeholder="Rate Per Hour" type="number" required />
+
+    <h3>Booking Details</h3>
+    <input [(ngModel)]="car.bookingDetail.pickupPoint" name="pickupPoint" placeholder="Pickup Point" required />
+    <input [(ngModel)]="car.bookingDetail.dropPoint" name="dropPoint" placeholder="Drop Point" required />
+    <input [(ngModel)]="car.bookingDetail.pickupDate" name="pickupDate" type="date" required />
+    <input [(ngModel)]="car.bookingDetail.pickupTime" name="pickupTime" placeholder="Pickup Time" required />
+    <input [(ngModel)]="car.bookingDetail.dropDate" name="dropDate" type="date" required />
+    <input [(ngModel)]="car.bookingDetail.dropTime" name="dropTime" placeholder="Drop Time" required />
+
+    <h3>Driver</h3>
+    <input [(ngModel)]="car.bookingDetail.driver[0].name" name="driverName" placeholder="Driver Name" required />
+    <input [(ngModel)]="car.bookingDetail.driver[0].mobNumber" name="driverMob" placeholder="Driver Mobile" required />
+    <input [(ngModel)]="car.bookingDetail.driver[0].licenceNo" name="driverLicence" placeholder="Licence No" required />
+
+    <button type="submit">Book Car</button>
+  </form>
+
+  <h2>Get Booking Details</h2>
+  <input #carNoInput placeholder="Enter Car Number" />
+  <button (click)="getBookingDetails(carNoInput.value)">Get Booking</button>
+
+  <div *ngIf="carDetails">
+    <h3>Booking Info</h3>
+    <pre>{{ carDetails | json }}</pre>
+  </div>
+</div>
