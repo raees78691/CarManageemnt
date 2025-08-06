@@ -1,0 +1,195 @@
+<h1>Car Management System</h1>
+<div class="main-container">
+  <!-- Left Section: Booking Form -->
+  <div class="booking-container">
+    <h2>🚗 Car Booking Form</h2>
+    <form (ngSubmit)="bookCar()" class="booking-form">
+      <div class="form-group">
+        <label for="carNumber">Car Number</label>
+        <input type="text" id="carNumber" [(ngModel)]="carNumber" name="carNumber" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carCategory">Car Category</label>
+        <input type="text" id="carCategory" [(ngModel)]="carCategory" name="carCategory" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carRateHour">Rate per Hour</label>
+        <input type="number" id="carRateHour" [(ngModel)]="carRateHour" name="carRateHour" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carPickupPoint">Pickup Point</label>
+        <input type="text" id="carPickupPoint" [(ngModel)]="carPickupPoint" name="carPickupPoint" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carDropPoint">Drop Point</label>
+        <input type="text" id="carDropPoint" [(ngModel)]="carDropPoint" name="carDropPoint" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carPickupDate">Pickup Date</label>
+        <input type="date" id="carPickupDate" [(ngModel)]="carPickupDate" name="carPickupDate" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carPickupTime">Pickup Time</label>
+        <input type="time" id="carPickupTime" [(ngModel)]="carPickupTime" name="carPickupTime" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carDropDate">Drop Date</label>
+        <input type="date" id="carDropDate" [(ngModel)]="carDropDate" name="carDropDate" required />
+      </div>
+
+      <div class="form-group">
+        <label for="carDropTime">Drop Time</label>
+        <input type="time" id="carDropTime" [(ngModel)]="carDropTime" name="carDropTime" required />
+      </div>
+
+      <div class="form-group">
+        <label for="driverName">Driver Name</label>
+        <input type="text" id="driverName" [(ngModel)]="driverName" name="driverName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="mobNumber">Mobile Number</label>
+        <input type="tel" id="mobNumber" [(ngModel)]="mobNumber" name="mobNumber" required />
+      </div>
+
+      <div class="form-group">
+        <label for="licenceNo">Licence Number</label>
+        <input type="text" id="licenceNo" [(ngModel)]="licenceNo" name="licenceNo" required />
+      </div>
+
+      <button type="submit" class="submit-btn">Book Car</button>
+    </form>
+
+    <div *ngIf="response" class="response-box">
+      <h3>✅ Booking Confirmation</h3>
+      <pre>{{ response | json }}</pre>
+    </div>
+  </div>
+
+  <!-- Right Section: Fetch Car Details -->
+  <!--<div class="booking-container">
+    <h2>🔍 Get Car Booking Details</h2>
+    <form (ngSubmit)="getCarDetails()">
+      <label for="carNumberFetch">Car Number:</label>
+      <input type="text" id="carNumberFetch" [(ngModel)]="carNumberFetch" name="carNumberFetch" required />
+      <button type="submit">Fetch Details</button>
+    </form>
+
+    <div *ngIf="carDetails">
+      <h3>Car Details:</h3>
+      <pre>{{ carDetails | json }}</pre>
+    </div>
+  </div>-->
+  
+ <!--
+<div class="booking-container">
+  <h2>🔍 Get Car Booking Details</h2>
+  <label for="carNumberFetch">Car Number:</label>
+  <input
+    type="text"
+    id="carNumberFetch"
+    [(ngModel)]="carNumberFetch"
+    name="carNumberFetch"
+    (ngModelChange)="getCarDetails()"
+    required
+  />
+
+  <div *ngIf="carDetails">
+    <h3>Car Details:</h3>
+    <pre>{{ carDetails | json }}</pre>
+  </div>
+</div>
+-->
+
+<!-- Link to toggle visibility -->
+<div class="booking-container">
+  <a href="#" (click)="toggleDetailsSection(); $event.preventDefault()"><h3>Search Car booking details</h3></a>
+
+
+<!-- Conditionally visible section below the link -->
+<div class="booking-container" *ngIf="showDetailsSection">
+  <h2>🔍 Get Car Booking Details</h2>
+  <label for="carNumberFetch">Search Car Number:</label>
+  <input
+    type="text"
+    id="carNumberFetch"
+    [(ngModel)]="carNumberFetch"
+    name="carNumberFetch"
+    (ngModelChange)="getCarDetails()"
+    required
+  />
+  
+
+ <!-- <div *ngIf="carDetails">
+    <h3>Car Details:</h3>
+    <pre>{{ carDetails | json }}</pre>
+  </div>-->
+  
+  <div *ngIf="carDetails" class="car-details-table">
+  <h3>Car Details:</h3>
+  <table border=2 align =left>
+    <tr>
+      <th>Car Number</th>
+      <td>{{ carDetails.carNumber }}</td>
+    </tr>
+    <tr>
+      <th>Car Category</th>
+      <td>{{ carDetails.carCategory }}</td>
+    </tr>
+    <tr>
+      <th>Rate per Hour</th>
+      <td>{{ carDetails.rateHour }}</td>
+    </tr>
+    <tr>
+      <th>Pickup Point</th>
+      <td>{{ carDetails.bookingDetail?.pickupPoint }}</td>
+    </tr>
+    <tr>
+      <th>Drop Point</th>
+      <td>{{ carDetails.bookingDetail?.dropPoint }}</td>
+    </tr>
+    <tr>
+      <th>Pickup Date</th>
+      <td>{{ carDetails.bookingDetail?.pickupDate }}</td>
+    </tr>
+    <tr>
+      <th>Pickup Time</th>
+      <td>{{ carDetails.bookingDetail?.pickupTime }}</td>
+    </tr>
+    <tr>
+      <th>Drop Date</th>
+      <td>{{ carDetails.bookingDetail?.dropDate }}</td>
+    </tr>
+    <tr>
+      <th>Drop Time</th>
+      <td>{{ carDetails.bookingDetail?.dropTime }}</td>
+    </tr>
+    <tr>
+      <th>Driver Name</th>
+      <td>{{ carDetails.bookingDetail?.driver[0]?.name }}</td>
+    </tr>
+    <tr>
+      <th>Licence No</th>
+      <td>{{ carDetails.bookingDetail?.driver[0]?.licenceNo }}</td>
+    </tr>
+    <tr>
+      <th>Mobile Number</th>
+      <td>{{ carDetails.bookingDetail?.driver[0]?.mobNumber }}</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+</div>
+
+
+  
+  
+</div>
